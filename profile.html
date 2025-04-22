@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Profile - MomentsMaker</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - MomentsMaker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="logo"><span>Moments</span>Maker</div>
+    <div class="logo">
+      <span>Moments</span>Maker
+    </div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#">Help & Support</a>
-      <a href="#">About Us</a>
-      <a href="login.html" class="login">Login</a>
-      <span class="icon">👤</span>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="support.html">Help & Support</a>
+      <a href="about.html">About Us</a>
+      <a href="login.html" class="login">Logout</a>
     </nav>
   </header>
+  
 
-  <main class="profile-container">
-    <div class="profile-card">
-      <div class="profile-image">
-        <img src="https://via.placeholder.com/150" alt="User Profile Picture">
+  <!-- Main Content -->
+  <main>
+    <!-- Profile Section -->
+    <section class="profile-section">
+      <div class="profile-card">
+        <img src="images/user.png" alt="User Image" />
+        <div class="profile-info">
+          <h2>Jane Doe</h2>
+          <p><strong>Email:</strong> jane@example.com</p>
+          <p><strong>Role:</strong> Event Planner</p>
+          <p><strong>Location:</strong> Dhaka, Bangladesh</p>
+          <p><strong>Bio:</strong> Passionate about creating unforgettable events with style and precision.</p>
+      
+          <div class="profile-buttons">
+            <button class="btn dark">Edit Profile</button>
+            <button class="btn light">Upload Photo</button>
+          </div>
+        </div>
       </div>
-      <div class="profile-info">
-        <h2>Jane Doe</h2>
-        <p><strong>Email:</strong> jane.doe@example.com</p>
-        <p><strong>Role:</strong> Event Planner</p>
-        <p><strong>Location:</strong> Dhaka, Bangladesh</p>
-        <p><strong>Member Since:</strong> April 2024</p>
-        <p><strong>About:</strong> Passionate event planner with 5+ years of experience organizing weddings, corporate parties, and social events.</p>
-      </div>
-    </div>
+      
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
-    <div class="socials">
-      <a href="#">Facebook</a> |
-      <a href="#">Instagram</a> |
-      <a href="#">LinkedIn</a>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
+      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
+      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
     </div>
   </footer>
+  
+
+  <script src="js/script.js"></script>
 </body>
 </html>
