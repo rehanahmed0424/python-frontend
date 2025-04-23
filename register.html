@@ -13,7 +13,8 @@
       </div>
   <div class="register-box">
     <h2>Create Account</h2>
-    <form>
+    <div id="feedbackMessage" class="feedback-message"></div>
+    <form id="register-form">
       <div class="form-group">
         <input type="text" placeholder="First Name" required />
       </div>
@@ -36,7 +37,8 @@
           <option value="provider">Service Provider</option>
         </select>
       </div>
-      <button type="submit">Register</button>
+      <button type="submit" class="btn dark">Register</button>
+      
     </form>
     <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
   </div>
@@ -50,5 +52,81 @@
       <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const registerBtn = document.getElementById('registerBtn');
+  const feedbackEl = document.getElementById('feedbackMessage');
+  
+  // Reset feedback
+  feedbackEl.style.display = 'none';
+  registerBtn.disabled = true;
+  registerBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+  try {
+    // Get form data
+    const formData = {
+      firstName: document.querySelector('input[placeholder="First Name"]').value,
+      lastName: document.querySelector('input[placeholder="Last Name"]').value,
+      email: document.querySelector('input[type="email"]').value,
+      password: document.querySelector('input[type="password"]').value,
+      role: document.querySelector('select').value
+    };
+
+    // Simulate API call (replace with actual fetch)
+    const response = await simulateRegistration(formData);
+    
+    if(response.success) {
+      // Show success feedback
+      feedbackEl.innerHTML = '<i class="fas fa-check-circle"></i> Registration successful! Redirecting...';
+      feedbackEl.className = 'feedback-message success';
+      feedbackEl.style.display = 'block';
+      
+      // Store email for OTP page
+      sessionStorage.setItem('verificationEmail', formData.email);
+      
+      // Redirect after 1.5 seconds
+      setTimeout(() => {
+        window.location.href = 'otp-verification.html';
+      }, 1500);
+    } else {
+      // Show error feedback
+      feedbackEl.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${response.message}`;
+      feedbackEl.className = 'feedback-message error';
+      feedbackEl.style.display = 'block';
+    }
+  } catch (error) {
+    // Show error feedback
+    feedbackEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Network error: ${error.message}`;
+    feedbackEl.className = 'feedback-message error';
+    feedbackEl.style.display = 'block';
+  } finally {
+    registerBtn.disabled = false;
+    registerBtn.innerHTML = 'Register';
+  }
+});
+
+// Simulate API call - replace with actual fetch()
+function simulateRegistration(data) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      // Simulate validation
+      if (!data.email.includes('@')) {
+        resolve({
+          success: false,
+          message: 'Please enter a valid email address'
+        });
+      } else {
+        resolve({
+          success: true,
+          message: 'Registration successful'
+        });
+      }
+    }, 1500);
+  });
+}
+  </script>
 </body>
 </html>
