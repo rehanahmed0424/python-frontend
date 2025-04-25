@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services - MomentsMaker</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo"><span>Moments</span>Maker</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="#">Help & Support</a>
+      <a href="#">About Us</a>
+      <div class="profile-dropdown">
+        <span class="icon" id="profileIcon">👤</span>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="profile.html">Profile</a>
+          <a href="#">Your Events</a>
+          <a href="#">Settings</a>
+          <a href="login.html" id="authLink">Login</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="services-hero">
+      <div class="overlay">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>WHERE<br/>DREAMS<br/>MEET<br/>PERFECTION</h1>
+          </div>
+          <div class="services-form">
+            <form class="search-form" action="search-results.html" method="GET">
+
+              <label for="eventType">Event Type</label>
+              <select id="eventType" required>
+                <option value="">Select Event Type</option>
+                <option value="wedding">Wedding</option>
+                <option value="birthday">Birthday</option>
+                <option value="corporate">Corporate Event</option>
+                <option value="anniversary">Anniversary</option>
+                <option value="party">Party</option>
+              </select>
+
+              <label for="location">Location</label>
+              <select id="location" required>
+                <option value="">Select Location</option>
+                <option value="dhaka">Dhaka</option>
+                <option value="chattogram">Chattogram</option>
+                <option value="khulna">Khulna</option>
+                <option value="rajshahi">Rajshahi</option>
+                <option value="barishal">Barishal</option>
+                <option value="sylhet">Sylhet</option>
+                <option value="mymensingh">Mymensingh</option>
+                <option value="rangpur">Rangpur</option>
+              </select>
+
+              <label for="serviceType">Service Type</label>
+              <select id="serviceType" required>
+                <option value="">Select Service Type</option>
+                <option value="photographer">Photographer</option>
+                <option value="decorator">Decorator</option>
+                <option value="caterer">Caterer</option>
+              </select>
+
+              <label for="eventDate">Date</label>
+              <input type="date" id="eventDate" required>
+
+              <button type="submit" class="btn maroon full">Find</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
+      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
+      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+    </div>
+  </footer>
+
+  <script>
+    const profileIcon = document.getElementById('profileIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const authLink = document.getElementById('authLink');
+
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (isLoggedIn) {
+      authLink.textContent = 'Logout';
+      authLink.href = '#';
+      authLink.addEventListener('click', () => {
+        localStorage.setItem('isLoggedIn', 'false');
+        window.location.reload();
+      });
+    } else {
+      authLink.textContent = 'Login';
+      authLink.href = 'login.html';
+    }
+
+    profileIcon.addEventListener('click', () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
