@@ -32,24 +32,44 @@
   <div class="card-list">
     <!-- Example Card -->
 <!-- Photographer 1 -->
-<a href="provider-details.html" class="provider-card">
-    <img src="images/pm.jpg" alt="John Doe">
-    <div class="provider-info">
-      <h2>John Doe Photography</h2>
-      <p>⭐️ 4.8 Rating</p>
-      <p>💰 15,000 BDT</p>
-      <p>📍 Dhaka</p>
-      <p>Experience: 6 Years</p>
-      <p class="short-desc">Creative wedding and portrait photography with modern elegance.</p>
-    </div>
-  </a>
+<a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
+  <img src="images/pm.jpg" alt="John Doe">
+  <div class="provider-info">
+    <h2>John Doe Photography</h2>
+    <input type="hidden" name="name" value="John Doe Photography">
+    <input type="hidden" name="rating" value="4.8">
+    <input type="hidden" name="price" value="15,000 BDT">
+    <input type="hidden" name="location" value="Dhaka">
+    <input type="hidden" name="experience" value="6 Years">
+    <input type="hidden" name="description" value="Creative wedding and portrait photography with modern elegance.">
+    <input type="hidden" name="image" value="images/pm.jpg">
+
+    <div class="star-rating" data-rating="4.8"></div>
+
+    <p>💰 15,000 BDT</p>
+    <p>📍 Dhaka</p>
+    <p>Experience: 6 Years</p>
+    <p class="short-desc">Creative wedding and portrait photography with modern elegance.</p>
+  </div>
+  
+</a>
+
   
   <!-- Photographer 2 -->
-  <a href="provider-details.html" class="provider-card">
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/pf.jpeg" alt="Sarah Ahmed">
     <div class="provider-info">
       <h2>Sarah Ahmed Studio</h2>
-      <p>⭐️ 4.6 Rating</p>
+      <input type="hidden" name="name" value="Sarah Ahmed Studio">
+      <input type="hidden" name="rating" value="4.6">
+      <input type="hidden" name="price" value="12,000 BDT">
+      <input type="hidden" name="location" value="Chattogram">
+      <input type="hidden" name="experience" value="4 Years">
+      <input type="hidden" name="description" value="A personal touch for your most memorable moments.">
+      <input type="hidden" name="image" value="images/pf.jpg">
+  
+      <div class="star-rating" data-rating="4.6"></div>
+
       <p>💰 12,000 BDT</p>
       <p>📍 Chattogram</p>
       <p>Experience: 4 Years</p>
@@ -57,38 +77,70 @@
     </div>
   </a>
   
+  
   <!-- Photographer 3 -->
-  <a href="provider-details.html" class="provider-card">
+
+
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/ps1.jpg" alt="LensCrafters">
     <div class="provider-info">
       <h2>LensCrafters BD</h2>
-      <p>⭐️ 4.9 Rating</p>
+      <input type="hidden" name="name" value="LensCrafters BD">
+      <input type="hidden" name="rating" value="4.9">
+      <input type="hidden" name="price" value="20,000 BDT">
+      <input type="hidden" name="location" value="Sylhet">
+      <input type="hidden" name="experience" value="8 Years">
+      <input type="hidden" name="description" value="Luxury photography services with cinematic flair.">
+      <input type="hidden" name="image" value="images/pf.jpg">
+  
+      <div class="star-rating" data-rating="4.9"></div>
+
       <p>💰 20,000 BDT</p>
-      <p>📍 Sylhet</p>
+      <p>📍 Chattogram</p>
       <p>Experience: 8 Years</p>
       <p class="short-desc">Luxury photography services with cinematic flair.</p>
     </div>
   </a>
   
   <!-- Decorator 1 -->
-  <a href="provider-details.html" class="provider-card">
+
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/d1.jpg" alt="Elegant Events Decor">
     <div class="provider-info">
       <h2>Elegant Events Decor</h2>
-      <p>⭐️ 4.7 Rating</p>
+      <input type="hidden" name="name" value="Elegant Events Decor">
+      <input type="hidden" name="rating" value="4.7">
+      <input type="hidden" name="price" value="18,000 BDT">
+      <input type="hidden" name="location" value="Rajshahi">
+      <input type="hidden" name="experience" value="7 Years">
+      <input type="hidden" name="description" value="Luxury photography services with cinematic flair.">
+      <input type="hidden" name="image" value="images/d1.jpg">
+  
+      <div class="star-rating" data-rating="4.7"></div>
+
       <p>💰 18,000 BDT</p>
-      <p>📍 Rajshahi</p>
+      <p>📍 Chattogram</p>
       <p>Experience: 7 Years</p>
       <p class="short-desc">Transforming ordinary spaces into magical experiences.</p>
     </div>
   </a>
   
   <!-- Caterer 1 -->
-  <a href="provider-details.html" class="provider-card">
+
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/c1.jpg" alt="Biryani King">
     <div class="provider-info">
       <h2>Biryani King</h2>
-      <p>⭐️ 4.5 Rating</p>
+      <input type="hidden" name="name" value="Biryani King">
+      <input type="hidden" name="rating" value="4.5">
+      <input type="hidden" name="price" value="250 BDT/plate">
+      <input type="hidden" name="location" value="Barisal">
+      <input type="hidden" name="experience" value="7 Years">
+      <input type="hidden" name="description" value="Spicy, aromatic, unforgettable biryani catering for all occasions.">
+      <input type="hidden" name="image" value="images/c1.jpg">
+  
+      <div class="star-rating" data-rating="4.5"></div>
+
       <p>💰 250 BDT/plate</p>
       <p>📍 Barisal</p>
       <p>Experience: 5 Years</p>
@@ -97,73 +149,119 @@
   </a>
   
   <!-- Caterer 2 -->
-  <a href="provider-details.html" class="provider-card">
+  
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/c2.jpg" alt="Shahi Feast">
     <div class="provider-info">
       <h2>Shahi Feast</h2>
-      <p>⭐️ 4.9 Rating</p>
+      <input type="hidden" name="name" value="Shahi Feast">
+      <input type="hidden" name="rating" value="4.9">
+      <input type="hidden" name="price" value="400 BDT/plate">
+      <input type="hidden" name="location" value="Dhaka">
+      <input type="hidden" name="experience" value="10 Years">
+      <input type="hidden" name="description" value="Premium catering with fusion menus and luxury service.">
+      <input type="hidden" name="image" value="images/c2.jpg">
+  
+      <div class="star-rating" data-rating="4.9"></div>
+
       <p>💰 400 BDT/plate</p>
-      <p>📍 Dhaka</p>
+      <p>📍 Barisal</p>
       <p>Experience: 10 Years</p>
       <p class="short-desc">Premium catering with fusion menus and luxury service.</p>
     </div>
   </a>
-  
+
   <!-- Decorator 2 -->
-  <a href="provider-details.html" class="provider-card">
+  
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/d2.avif" alt="Blossom Decor">
     <div class="provider-info">
       <h2>Blossom Decor</h2>
-      <p>⭐️ 4.6 Rating</p>
+      <input type="hidden" name="name" value="Blossom Decor">
+      <input type="hidden" name="rating" value="4.6">
+      <input type="hidden" name="price" value="14,000 BDT">
+      <input type="hidden" name="location" value="Khulna">
+      <input type="hidden" name="experience" value="4 Years">
+      <input type="hidden" name="description" value="Fresh, floral, and fabulous event designs.">
+      <input type="hidden" name="image" value="images/d2.avif">
+  
+      <div class="star-rating" data-rating="4.6"></div>
+
       <p>💰 14,000 BDT</p>
-      <p>📍 Khulna</p>
-      <p>Experience: 4 Years</p>
+      <p>📍 Barisal</p>
+      <p>Experience: 10 Years</p>
       <p class="short-desc">Fresh, floral, and fabulous event designs.</p>
     </div>
   </a>
-  
   <!-- Photographer 4 -->
-  <a href="provider-details.html" class="provider-card">
+
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/ps2.webp" alt="Flashpoint">
     <div class="provider-info">
       <h2>Flashpoint Photography</h2>
-      <p>⭐️ 4.3 Rating</p>
+      <input type="hidden" name="name" value="Flashpoint Photography">
+      <input type="hidden" name="rating" value="4.3">
+      <input type="hidden" name="price" value="11,000 BDT">
+      <input type="hidden" name="location" value="Mymensingh">
+      <input type="hidden" name="experience" value="3 Years">
+      <input type="hidden" name="description" value="Capturing emotions with clarity and creativity.">
+      <input type="hidden" name="image" value="images/ps2.webp">
+  
+      <div class="star-rating" data-rating="4.3"></div>
+
       <p>💰 11,000 BDT</p>
       <p>📍 Mymensingh</p>
       <p>Experience: 3 Years</p>
-
       <p class="short-desc">Capturing emotions with clarity and creativity.</p>
     </div>
   </a>
   
   <!-- Caterer 3 -->
-  <a href="provider-details.html" class="provider-card">
+
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/c3.jpg" alt="Tandoori Delight">
     <div class="provider-info">
       <h2>Tandoori Delight</h2>
-      <p>⭐️ 4.7 Rating</p>
-      <p>💰 350 BDT/plate</p>
-      <p>📍 Rangpur</p>
-      <p>Experience: 6 Years</p>
+      <input type="hidden" name="name" value="Tandoori Delight">
+      <input type="hidden" name="rating" value="4.7">
+      <input type="hidden" name="price" value="350 BDT/plate">
+      <input type="hidden" name="location" value="Rangpur">
+      <input type="hidden" name="experience" value="6 Years">
+      <input type="hidden" name="description" value="Specializing in BBQ and Indian fusion cuisine.">
+      <input type="hidden" name="image" value="images/c3.jpg">
+  
+      <div class="star-rating" data-rating="4.7"></div>
 
+      <p>💰 350 BDT/plate</p>
+      <p>📍 Mymensingh</p>
+      <p>Experience: 6 Years</p>
       <p class="short-desc">Specializing in BBQ and Indian fusion cuisine.</p>
     </div>
   </a>
   
+  
   <!-- Decorator 3 -->
-  <a href="provider-details.html" class="provider-card">
+  
+  <a href="provider-details.html" class="provider-card" onclick="goToDetails(this)">
     <img src="images/d3.avif" alt="Aura Events">
     <div class="provider-info">
       <h2>Aura Events</h2>
-      <p>⭐️ 4.8 Rating</p>
+      <input type="hidden" name="name" value="Aura Events">
+      <input type="hidden" name="rating" value="4.8">
+      <input type="hidden" name="price" value="16,000 BDT">
+      <input type="hidden" name="location" value="Sylhet">
+      <input type="hidden" name="experience" value="6 Years">
+      <input type="hidden" name="description" value="Chic, minimal, and dreamy decor concepts for any celebration.">
+      <input type="hidden" name="image" value="images/d3.avif">
+  
+      <div class="star-rating" data-rating="4.8"></div>
+
       <p>💰 16,000 BDT</p>
       <p>📍 Sylhet</p>
       <p>Experience: 6 Years</p>
- 
       <p class="short-desc">Chic, minimal, and dreamy decor concepts for any celebration.</p>
     </div>
   </a>
-  
 
     <!-- Add more cards like this -->
   </div>
@@ -177,6 +275,44 @@
       <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
     </div>
   </footer>
+
+ 
+  <script>
+  function goToDetails(card) {
+    const provider = {
+      name: card.querySelector('input[name="name"]').value,
+      rating: card.querySelector('input[name="rating"]').value,
+      price: card.querySelector('input[name="price"]').value,
+      location: card.querySelector('input[name="location"]').value,
+      experience: card.querySelector('input[name="experience"]').value,
+      description: card.querySelector('input[name="description"]').value,
+      image: card.querySelector('input[name="image"]').value,
+    };
+
+    localStorage.setItem('selectedProvider', JSON.stringify(provider));
+    window.location.href = 'provider-details.html';
+  }
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.star-rating').forEach(div => {
+      const rating = parseFloat(div.dataset.rating);
+      let stars = '';
+      for (let i = 1; i <= 5; i++) {
+        if (rating >= i) {
+          stars += '★';
+        } else if (rating >= i - 0.5) {
+          stars += '☆'; // optional: could use half star image/svg
+        } else {
+          stars += '☆';
+        }
+      }
+      div.innerHTML = stars + ` (${rating})`;
+    });
+  });
+</script>
+
 
 </body>
 </html>

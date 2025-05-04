@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Service Provider Details | MomentsMaker</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="css/details.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Reuse your header here -->
+  <header>
+    <div class="logo"><span>Moments</span>Maker</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="#">Help & Support</a>
+      <a href="#">About Us</a>
+      <div class="profile-dropdown">
+        <span class="icon" id="profileIcon">👤</span>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="profile.html">Profile</a>
+          <a href="#">Your Events</a>
+          <a href="#">Settings</a>
+          <a href="login.html" id="authLink">Login</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="details-section">
+    <div class="details-img">
+      <img src="images/pm.jpg" alt="Provider Image" />
+    </div>
+    <div class="details-info">
+      <h2 contenteditable="true">John Doe</h2>
+      <div class="rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+      </div>
+      <p><strong>Service Type:</strong> Photographer</p>
+      <p><strong>Location:</strong> Dhaka</p>
+      <p><strong>Charge:</strong> ৳15,000</p>
+      <p><strong>Experience:</strong> 5 Years</p>
+      <p><strong>Gender:</strong> Male</p>
+
+      <div class="description-box" contenteditable="true">
+        Highly experienced wedding photographer known for cinematic-style photoshoots. Available for travel and customizable packages.
+      </div>
+      <a href="cart.html">
+        <button class="hire-btn">Hire Now</button>
+      </a>
+      
+    </div>
+  </section>
+
+  <!-- Reuse your footer -->
+  <footer class="footer">
+    <p>© 2025 MomentsMaker. All Rights Reserved.</p>
+    <div class="social-icons">
+      <a href="#"><img src="facebook.svg" alt="Facebook" /></a>
+      <a href="#"><img src="instagram.svg" alt="Instagram" /></a>
+      <a href="#"><img src="tiktok.svg" alt="TikTok" /></a>
+    </div>
+  </footer>
+
+  <script>
+    const profileIcon = document.getElementById('profileIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const authLink = document.getElementById('authLink');
+  
+    // Simulate login state (use real auth logic here)
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  
+    // Update auth link text and behavior
+    if (isLoggedIn) {
+      authLink.textContent = 'Logout';
+      authLink.href = 'login.html';
+      authLink.addEventListener('click', () => {
+        localStorage.setItem('isLoggedIn', 'false');
+        window.location.reload(); // or redirect to homepage
+      });
+    } else {
+      authLink.textContent = 'Login';
+      authLink.href = 'login.html';
+    }
+  
+    profileIcon.addEventListener('click', () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    window.addEventListener('click', (e) => {
+      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

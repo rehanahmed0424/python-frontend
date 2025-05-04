@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | MomentMakers</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><span>Moments</span>Maker</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="#">Help & Support</a>
+          <a href="#">About Us</a>
+          <div class="profile-dropdown">
+            <span class="icon" id="profileIcon">👤</span>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <a href="profile.html">Profile</a>
+              <a href="#">Your Events</a>
+              <a href="#">Settings</a>
+              <a href="login.html" id="authLink">Login</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+<main>
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+    
+        <div class="cart-items">
+          <!-- Single Cart Item -->
+          <div class="cart-item">
+            <div class="item-details">
+              <h2>Photographer: SnapPro Studios</h2>
+              <p>Category: Photography</p>
+              <p class="price">৳5,000</p>
+            </div>
+            <button class="remove-btn">Remove</button>
+          </div>
+    
+          <div class="cart-item">
+            <div class="item-details">
+              <h2>Caterer: TasteBuds</h2>
+              <p>Category: Catering</p>
+              <p class="price">৳8,500</p>
+            </div>
+            <button class="remove-btn">Remove</button>
+          </div>
+    
+          <!-- More items will go here -->
+        </div>
+        <div class="cart-footer">
+            <div class="total">
+              Total: ৳13,500
+            </div>
+            <div class="cart-buttons">
+                <a href="services.html">
+                    <button class="btn">Find More</button>
+                  </a>
+                  <a href="#">
+                    <button class="btn">Checkout</button>
+                  </a>
+                  
+            </div>
+          </div>
+        </div>
+</main>    
+
+<footer class="footer">
+    <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
+      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
+      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+    </div>
+  </footer>
+
+  <script>
+    const profileIcon = document.getElementById('profileIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const authLink = document.getElementById('authLink');
+  
+    // Simulate login state (use real auth logic here)
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  
+    // Update auth link text and behavior
+    if (isLoggedIn) {
+      authLink.textContent = 'Logout';
+      authLink.href = 'login.html';
+      authLink.addEventListener('click', () => {
+        localStorage.setItem('isLoggedIn', 'false');
+        window.location.reload(); // or redirect to homepage
+      });
+    } else {
+      authLink.textContent = 'Login';
+      authLink.href = 'login.html';
+    }
+  
+    profileIcon.addEventListener('click', () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    window.addEventListener('click', (e) => {
+      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+  </script>
+ 
+
+    
+</body>
+</html>
