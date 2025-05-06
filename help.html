@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help & Support | MomentsMaker</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/help.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><span>Moments</span>Maker</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="help.html">Help & Support</a>
+      <a href="about.html">About Us</a>
+      <div class="profile-dropdown">
+        <span class="icon" id="profileIcon">👤</span>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="profile.html">Profile</a>
+          <a href="#">Your Events</a>
+          <a href="#">Settings</a>
+          <a href="login.html" id="authLink">Login</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="help-container">
+    <h1>Help & Support</h1>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>How do I book a service provider?</h3>
+        <p>Go to the Services page, browse by category, and click "Find" to add to your cart. Proceed to checkout to confirm.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I cancel a booking?</h3>
+        <p>Yes, you can cancel any service up to 48 hours before your event date by going to your Profile > Your Events.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I get support?</h3>
+        <p>You can reach our support team via email at <a href="mailto:support@momentsmaker.com">support@momentsmaker.com</a> or call us at +880-1234-567890.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Where can I view my bookings?</h3>
+        <p>Log into your account and go to "Your Events" under the profile menu to see your upcoming and past bookings.</p>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <h2>Still need help?</h2>
+      <p>Fill out the form below and we’ll get back to you shortly.</p>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Describe your issue..." rows="5" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
+      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
+      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+    </div>
+  </footer>
+
+  <script>
+    const profileIcon = document.getElementById('profileIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const authLink = document.getElementById('authLink');
+
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (isLoggedIn) {
+      authLink.textContent = 'Logout';
+      authLink.href = 'login.html';
+      authLink.addEventListener('click', () => {
+        localStorage.setItem('isLoggedIn', 'false');
+        window.location.reload();
+      });
+    } else {
+      authLink.textContent = 'Login';
+      authLink.href = 'login.html';
+    }
+
+    profileIcon.addEventListener('click', () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
