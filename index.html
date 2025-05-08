@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MomentsMaker</title>
   <link rel="stylesheet" href="css/styles.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <header>
@@ -15,36 +16,55 @@
       <a href="services.html">Services</a>
       <a href="help.html">Help & Support</a>
       <a href="about.html">About Us</a>
-      <div class="profile-dropdown">
+      <a href="login.html" class="login-btn" id="loginButton">Login</a>
+      <div class="profile-dropdown" id="profileDropdown">
         <span class="icon" id="profileIcon">👤</span>
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="profile.html">Profile</a>
           <a href="#">Your Events</a>
           <a href="#">Settings</a>
-          <a href="login.html" id="authLink">Login</a>
+          <a href="#" id="logoutButton">Logout</a>
         </div>
       </div>
     </nav>
   </header>
 
+
   <main>
     <section class="hero">
-        <div class="hero-inner">
-          <div class="left">
-            <h1>WHAT DO YOU PLAN?<br>WE WILL LEND YOU A HAND</h1>
-            <p>Plan a satisfying and unforgettable event</p>
-            <div class="buttons">
-              <button class="btn dark">Get Started</button>
-              <button class="btn light">Learn More</button>
-            </div>
-          </div>
-          <div class="right">
-            <img src="images/event.jpg" alt="Event" />
+      <div class="hero-inner">
+        <div class="left">
+          <h1>WHAT DO YOU PLAN?<br>WE WILL LEND YOU A HAND</h1>
+          <p>Plan a satisfying and unforgettable event</p>
+          <div class="buttons">
+            <button class="btn dark">Get Started</button>
+            <button class="btn light">Learn More</button>
           </div>
         </div>
-      </section>
-      
-      
+        <div class="right">
+          <div class="slideshow">
+            <div class="slide active">
+              <img src="images/event1.jpg" alt="Wedding Event">
+            </div>
+            <div class="slide">
+              <img src="images/event2.jpg" alt="Corporate Event">
+            </div>
+            <div class="slide">
+              <img src="images/event3.jpg" alt="Birthday Party">
+            </div>
+          </div>
+          <div class="slideshow-controls">
+            <button class="slide-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <div class="dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <button class="slide-btn next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="services">
       <h2>SERVICES</h2>
@@ -64,48 +84,247 @@
       </div>
     </section>
 
+    <section class="testimonials">
+      <h2>WHAT OUR CLIENTS SAY</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"MomentsMaker transformed our wedding into a magical experience. Their attention to detail was impeccable!"</p>
+          <div class="client-info">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J.">
+            <div>
+              <h4>Sarah J.</h4>
+              <p>Wedding Client</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"The corporate event they planned for us exceeded all expectations. Professional from start to finish."</p>
+          <div class="client-info">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T.">
+            <div>
+              <h4>Michael T.</h4>
+              <p>Corporate Client</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+          <p class="testimonial-text">"Our anniversary party was perfect thanks to MomentsMaker. They handled everything seamlessly."</p>
+          <div class="client-info">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily R.">
+            <div>
+              <h4>Emily R.</h4>
+              <p>Anniversary Client</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer">
       <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
       <div class="social-icons">
-        <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
-        <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
-        <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </footer>
   </main>
 
   <script>
+
+       // Check login state and update UI
+       function updateAuthUI() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const loginButton = document.getElementById('loginButton');
+      const profileDropdown = document.getElementById('profileDropdown');
+      const logoutButton = document.getElementById('logoutButton');
+
+      if (isLoggedIn) {
+        loginButton.style.display = 'none';
+        profileDropdown.style.display = 'flex';
+        logoutButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.setItem('isLoggedIn', 'false');
+          window.location.href = 'index.html';
+        });
+      } else {
+        loginButton.style.display = 'block';
+        profileDropdown.style.display = 'none';
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAuthUI();
+      
+      // Profile dropdown toggle
+      const profileIcon = document.getElementById('profileIcon');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      
+      profileIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      window.addEventListener('click', () => {
+        dropdownMenu.style.display = 'none';
+      });
+
+      // Rest of your existing JavaScript (slideshow, etc.)
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      const totalSlides = slides.length;
+      
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        currentSlide = (index + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+      
+      let slideInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000);
+      
+      document.querySelector('.next').addEventListener('click', () => {
+        clearInterval(slideInterval);
+        showSlide(currentSlide + 1);
+        slideInterval = setInterval(() => {
+          showSlide(currentSlide + 1);
+        }, 5000);
+      });
+      
+      document.querySelector('.prev').addEventListener('click', () => {
+        clearInterval(slideInterval);
+        showSlide(currentSlide - 1);
+        slideInterval = setInterval(() => {
+          showSlide(currentSlide + 1);
+        }, 5000);
+      });
+      
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          clearInterval(slideInterval);
+          showSlide(index);
+          slideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 5000);
+        });
+      });
+    });
+    
+    // Slideshow functionality (keep existing)
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+    
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      currentSlide = (index + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+    
+    let slideInterval = setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000);
+    
+    document.querySelector('.next').addEventListener('click', () => {
+      clearInterval(slideInterval);
+      showSlide(currentSlide + 1);
+      slideInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000);
+    });
+    
+    document.querySelector('.prev').addEventListener('click', () => {
+      clearInterval(slideInterval);
+      showSlide(currentSlide - 1);
+      slideInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000);
+    });
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        showSlide(index);
+        slideInterval = setInterval(() => {
+          showSlide(currentSlide + 1);
+        }, 5000);
+      });
+    });
+  
+    // Profile dropdown (keep existing)
     const profileIcon = document.getElementById('profileIcon');
     const dropdownMenu = document.getElementById('dropdownMenu');
     const authLink = document.getElementById('authLink');
-  
-    // Simulate login state (use real auth logic here)
+    
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  
-    // Update auth link text and behavior
+    
     if (isLoggedIn) {
       authLink.textContent = 'Logout';
       authLink.href = 'login.html';
       authLink.addEventListener('click', () => {
         localStorage.setItem('isLoggedIn', 'false');
-        window.location.reload(); // or redirect to homepage
+        window.location.reload();
       });
     } else {
       authLink.textContent = 'Login';
       authLink.href = 'login.html';
     }
-  
+    
     profileIcon.addEventListener('click', () => {
       dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
     });
-  
+    
     window.addEventListener('click', (e) => {
       if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
         dropdownMenu.style.display = 'none';
       }
     });
+  
+    // NEW: Scroll-triggered animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const animateOnScroll = () => {
+        const serviceItems = document.querySelectorAll('.service-item');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const triggerOffset = window.innerHeight / 1.2;
+        
+        serviceItems.forEach((item, index) => {
+          const itemTop = item.getBoundingClientRect().top;
+          if (itemTop < triggerOffset) {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+            item.style.transitionDelay = `${index * 0.1}s`;
+          }
+        });
+        
+        testimonialCards.forEach((card, index) => {
+          const cardTop = card.getBoundingClientRect().top;
+          if (cardTop < triggerOffset) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+            card.style.transitionDelay = `${index * 0.1}s`;
+          }
+        });
+      };
+      
+      // Run once on load
+      animateOnScroll();
+      
+      // Run on scroll
+      window.addEventListener('scroll', animateOnScroll);
+    });
   </script>
-  
-  
 </body>
 </html>
