@@ -1,55 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Register - MomentsMaker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | MomentsMaker</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="css/register.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Main styles first -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Register-specific styles -->
+  <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
-  <div class="container">
-    <div class="logo">
-      <span class="highlight">Moments</span>Maker
-    </div>
-    <div class="register-box">
-      <h2>Create Account</h2>
-      <div id="feedbackMessage" class="feedback-message"></div>
-      <form id="register-form">
-        <div class="form-group">
-          <input type="text" placeholder="First Name" required />
+  <header>
+    <div class="logo"><span>Moments</span>Maker</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="help.html">Help & Support</a>
+      <a href="about.html">About Us</a>
+      <a href="login.html" class="login-btn">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="register-section">
+      <div class="register-container">
+        <div class="register-box">
+          <h2>Create Account</h2>
+          <p>Join us to start planning your perfect events</p>
+          
+          <div id="feedbackMessage" class="feedback-message"></div>
+          
+          <form id="register-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="Enter your first name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="Enter your last name" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="password" placeholder="Create a password" required>
+                <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                  <i class="far fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="planner">Event Planner</option>
+                <option value="provider">Service Provider</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" id="registerBtn" class="btn dark">Register</button>
+            </div>
+          </form>
+          
+          <div class="login-link">
+            Already have an account? <a href="login.html">Login here</a>
+          </div>
         </div>
-        <div class="form-group">
-          <input type="text" placeholder="Last Name" required />
-        </div>
-        <div class="form-group">
-          <input type="email" placeholder="Email" required />
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="Password" required />
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="Confirm Password" required />
-        </div>
-        <div class="form-group">
-          <select required>
-            <option value="" disabled selected>Select Role</option>
-            <option value="planner">Event Planner</option>
-            <option value="provider">Service Provider</option>
-          </select>
-        </div>
-        <button type="submit" id="registerBtn" class="btn dark">Register</button>
-      </form>
-      <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
-    </div>
-  </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
     <div class="social-icons">
-      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
-      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
-      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
@@ -68,15 +111,16 @@
       try {
         // Get form data
         const formData = {
-          firstName: document.querySelector('input[placeholder="First Name"]').value,
-          lastName: document.querySelector('input[placeholder="Last Name"]').value,
-          email: document.querySelector('input[type="email"]').value,
-          password: document.querySelector('input[type="password"]').value,
-          role: document.querySelector('select').value
+          firstName: document.getElementById('firstName').value,
+          lastName: document.getElementById('lastName').value,
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+          confirmPassword: document.getElementById('confirmPassword').value,
+          role: document.getElementById('role').value
         };
 
         // Validate passwords match
-        if (formData.password !== document.querySelector('input[placeholder="Confirm Password"]').value) {
+        if (formData.password !== formData.confirmPassword) {
           throw new Error('Passwords do not match');
         }
 
@@ -109,6 +153,19 @@
         registerBtn.disabled = false;
         registerBtn.innerHTML = 'Register';
       }
+    });
+
+    // Password toggle
+    document.querySelector('.toggle-password').addEventListener('click', function() {
+      const passwordInput = document.getElementById('password');
+      const icon = this.querySelector('i');
+      
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      
+      icon.classList.toggle('fa-eye');
+      icon.classList.toggle('fa-eye-slash');
+      this.classList.toggle('active');
     });
 
     // Simulate API call - replace with actual fetch()

@@ -5,26 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Services - MomentsMaker</title>
   <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/services.css" />
+  
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <header>
     <div class="logo"><span>Moments</span>Maker</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="help.html">Help & Support</a>
-      <a href="about.html">About Us</a>
-      <div class="profile-dropdown">
-        <span class="icon" id="profileIcon">👤</span>
-        <div class="dropdown-menu" id="dropdownMenu">
-          <a href="profile.html">Profile</a>
-          <a href="#">Your Events</a>
-          <a href="#">Settings</a>
-          <a href="login.html" id="authLink">Login</a>
-        </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="help.html">Help & Support</a>
+    <a href="about.html">About Us</a>
+    <a href="login.html" class="login-btn" id="loginButton">Login</a>
+    <div class="profile-dropdown" id="profileDropdown">
+      <span class="icon" id="profileIcon"><i class="fas fa-user"></i></span>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="profile.html">Profile</a>
+        <a href="#">Your Events</a>
+        <a href="#">Settings</a>
+        <a href="#" id="logoutButton">Logout</a>
       </div>
-    </nav>
+    </div>
+  </nav>
   </header>
 
   <main>
@@ -82,40 +86,53 @@
   <footer class="footer">
     <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
     <div class="social-icons">
-      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
-      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
-      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
-
   <script>
-    const profileIcon = document.getElementById('profileIcon');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const authLink = document.getElementById('authLink');
-
+   function updateAuthUI() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const loginButton = document.getElementById('loginButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const logoutButton = document.getElementById('logoutButton');
 
     if (isLoggedIn) {
-      authLink.textContent = 'Logout';
-      authLink.href = '#';
-      authLink.addEventListener('click', () => {
-        localStorage.setItem('isLoggedIn', 'false');
-        window.location.reload();
-      });
-    } else {
-      authLink.textContent = 'Login';
-      authLink.href = 'login.html';
-    }
-
-    profileIcon.addEventListener('click', () => {
-      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.style.display = 'none';
+      if (loginButton) loginButton.style.display = 'none';
+      if (profileDropdown) profileDropdown.style.display = 'flex';
+      if (logoutButton) {
+        logoutButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.setItem('isLoggedIn', 'false');
+          window.location.href = 'index.html';
+        });
       }
-    });
+    } else {
+      if (loginButton) loginButton.style.display = 'block';
+      if (profileDropdown) profileDropdown.style.display = 'none';
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateAuthUI();
+    
+    // Profile dropdown toggle
+    const profileIcon = document.getElementById('profileIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    
+    if (profileIcon && dropdownMenu) {
+      profileIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      window.addEventListener('click', () => {
+        dropdownMenu.style.display = 'none';
+      });
+    }
+  });
   </script>
 </body>
 </html>
