@@ -30,40 +30,67 @@
 
 
   <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="left">
-          <h1>WHAT DO YOU PLAN?<br>WE WILL LEND YOU A HAND</h1>
-          <p>Plan a satisfying and unforgettable event</p>
-          <div class="buttons">
-            <button class="btn dark">Get Started</button>
-            <button class="btn light">Learn More</button>
+    <!-- In your index.html file, replace the hero section with this: -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="left">
+      <h1>WHAT DO YOU PLAN? WE WILL LEND YOU A HAND </h1>
+      <p class="subtitle">From intimate gatherings to grand celebrations - we've got every detail covered</p>
+      <div class="buttons">
+        <button class="btn dark">
+          <i class="fas fa-calendar-plus"></i> Plan Your Event
+        </button>
+        <button class="btn light">
+          <i class="fas fa-play-circle"></i> Watch How It Works
+        </button>
+      </div>
+      <div class="trust-badges">
+        <div class="trust-item">
+          <i class="fas fa-check-circle"></i>
+          <span>5000+ Successful Events</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-star"></i>
+          <span>98% Satisfaction Rate</span>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="slideshow">
+        <div class="slide active">
+          <img src="images/event1.jpg" alt="Wedding Event">
+          <div class="slide-caption">
+            <h3>Wedding Planning</h3>
+            <p>Your perfect day, perfectly planned</p>
           </div>
         </div>
-        <div class="right">
-          <div class="slideshow">
-            <div class="slide active">
-              <img src="images/event1.jpg" alt="Wedding Event">
-            </div>
-            <div class="slide">
-              <img src="images/event2.jpg" alt="Corporate Event">
-            </div>
-            <div class="slide">
-              <img src="images/event3.jpg" alt="Birthday Party">
-            </div>
+        <div class="slide">
+          <img src="images/event2.jpg" alt="Corporate Event">
+          <div class="slide-caption">
+            <h3>Corporate Events</h3>
+            <p>Impress your clients and colleagues</p>
           </div>
-          <div class="slideshow-controls">
-            <button class="slide-btn prev"><i class="fas fa-chevron-left"></i></button>
-            <div class="dots">
-              <span class="dot active"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <button class="slide-btn next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="slide">
+          <img src="images/event3.jpg" alt="Birthday Party">
+          <div class="slide-caption">
+            <h3>Birthday Celebrations</h3>
+            <p>Make every year unforgettable</p>
           </div>
         </div>
       </div>
-    </section>
+      <div class="slideshow-controls">
+        <button class="slide-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <button class="slide-btn next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section class="services">
       <h2>SERVICES</h2>
