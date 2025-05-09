@@ -8,6 +8,16 @@
   padding: 40px 20px;
 }
 
+.t-btn {
+  color: rgb(255, 255, 255);
+}
+
+.t-btn:visited {
+  color: rgb(255, 255, 255);
+}
+
+
+
 .profile-card {
   background-color: #a43753;
   color: white;
@@ -189,7 +199,7 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER STYLES */
+/* NAVBAR STYLES */
 header {
   display: flex;
   justify-content: space-between;
@@ -200,7 +210,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  animation: fadeInDown 0.8s ease-out;
 }
 
 .logo {
@@ -211,6 +220,8 @@ header {
 .logo span {
   color: #a43753;
 }
+
+
 
 nav {
   display: flex;
@@ -227,6 +238,7 @@ nav a {
   transition: color 0.3s ease;
 }
 
+/* Underline animation */
 nav a:after {
   content: '';
   position: absolute;
