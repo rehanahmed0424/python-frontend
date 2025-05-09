@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Events | MomentsMaker</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/event.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ 
+</head>
+<body>
+  <header>
+    <div class="logo"><span>Moments</span>Maker</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="help.html">Help & Support</a>
+      <a href="about.html">About Us</a>
+      <a href="login.html" class="login-btn" id="loginButton">Login</a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <span class="icon" id="profileIcon"><i class="fas fa-user"></i></span>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="profile.html">Profile</a>
+          <a href="events.html">My Events</a>
+          <a href="#" id="logoutButton">Logout</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Enhanced Hero Section -->
+    <section class="events-hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Your Event Journey</h1>
+        <p>Relive your special moments and manage upcoming events</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Total Events</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Upcoming</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4.7</span>
+            <span class="stat-label">Avg. Rating</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="events-container">
+      <div class="filter-controls">
+        <div class="filter-group">
+          <label for="event-type">Filter by:</label>
+          <select id="event-type" class="filter-select">
+            <option value="all">All Events</option>
+            <option value="wedding">Wedding</option>
+            <option value="birthday">Birthday</option>
+            <option value="corporate">Corporate</option>
+            <option value="anniversary">Anniversary</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="sort-by">Sort by:</label>
+          <select id="sort-by" class="filter-select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="type">Event Type</option>
+          </select>
+        </div>
+        <button class="btn dark" id="addEventBtn">
+          <i class="fas fa-plus"></i> Add New Event
+        </button>
+      </div>
+
+      <div class="events-grid">
+        <!-- Event Card 1 - Wedding -->
+        <div class="event-card">
+          <div class="event-header">
+            <span class="event-type wedding">Wedding</span>
+            <span class="event-date">May 15, 2025</span>
+          </div>
+          <div class="event-body">
+            <h3 class="event-title">Sarah & Michael's Wedding</h3>
+            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Grand Ballroom, The Ritz Hotel</p>
+            
+            <div class="service-providers">
+              <h4>Service Providers:</h4>
+              <div class="providers-grid">
+                <div class="provider">
+                  <img src="images/c2.jpg" alt="Caterer">
+                  <span>Shahi Feast</span>
+                  <div class="star-rating" style="--rating: 4.9;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.9</span>
+                  </div>
+                </div>
+                <div class="provider">
+                  <img src="images/d3.avif" alt="Decorator">
+                  <span>Aura Events</span>
+                  <div class="star-rating" style="--rating: 4.8;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.8</span>
+                  </div>
+                </div>
+                <div class="provider">
+                  <img src="images/pm.jpg" alt="Photographer">
+                  <span>John Doe Photography</span>
+                  <div class="star-rating" style="--rating: 4.8;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.8</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="event-footer">
+            <button class="btn dark"><i class="fas fa-eye"></i> View Details</button>
+            <button class="btn light"><i class="fas fa-calendar-check"></i> Manage</button>
+          </div>
+        </div>
+
+        <!-- Event Card 2 - Corporate -->
+        <div class="event-card">
+          <div class="event-header">
+            <span class="event-type corporate">Corporate</span>
+            <span class="event-date">Apr 22, 2025</span>
+          </div>
+          <div class="event-body">
+            <h3 class="event-title">TechCon 2025</h3>
+            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Convention Center, Downtown</p>
+            
+            <div class="service-providers">
+              <h4>Service Providers:</h4>
+              <div class="providers-grid">
+                <div class="provider">
+                  <img src="images/c1.jpg" alt="Caterer">
+                  <span>Biryani King</span>
+                  <div class="star-rating" style="--rating: 4.5;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.5</span>
+                  </div>
+                </div>
+                <div class="provider">
+                  <img src="images/ps2.webp" alt="Photographer">
+                  <span>Flashpoint Photography</span>
+                  <div class="star-rating" style="--rating: 4.3;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="event-footer">
+            <button class="btn dark"><i class="fas fa-eye"></i> View Details</button>
+            <button class="btn light"><i class="fas fa-calendar-check"></i> Manage</button>
+          </div>
+        </div>
+
+        <!-- Event Card 3 - Birthday -->
+        <div class="event-card">
+          <div class="event-header">
+            <span class="event-type birthday">Birthday</span>
+            <span class="event-date">Mar 10, 2025</span>
+          </div>
+          <div class="event-body">
+            <h3 class="event-title">Emily's 30th Birthday</h3>
+            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Private Residence, Lakeside</p>
+            
+            <div class="service-providers">
+              <h4>Service Providers:</h4>
+              <div class="providers-grid">
+                <div class="provider">
+                  <img src="images/c3.jpg" alt="Caterer">
+                  <span>Tandoori Delight</span>
+                  <div class="star-rating" style="--rating: 4.7;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.7</span>
+                  </div>
+                </div>
+                <div class="provider">
+                  <img src="images/d2.avif" alt="Decorator">
+                  <span>Blossom Decor</span>
+                  <div class="star-rating" style="--rating: 4.6;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.6</span>
+                  </div>
+                </div>
+                <div class="provider">
+                  <img src="images/pf.jpeg" alt="Photographer">
+                  <span>Sarah Ahmed Studio</span>
+                  <div class="star-rating" style="--rating: 4.6;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="event-footer">
+            <button class="btn dark"><i class="fas fa-eye"></i> View Details</button>
+            <button class="btn light"><i class="fas fa-calendar-check"></i> Manage</button>
+          </div>
+        </div>
+
+        <!-- Event Card 4 - Anniversary -->
+        <div class="event-card">
+          <div class="event-header">
+            <span class="event-type anniversary">Anniversary</span>
+            <span class="event-date">Feb 14, 2025</span>
+          </div>
+          <div class="event-body">
+            <h3 class="event-title">25th Wedding Anniversary</h3>
+            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Sunset Restaurant</p>
+            
+            <div class="service-providers">
+              <h4>Service Providers:</h4>
+              <div class="providers-grid">
+                <div class="provider">
+                  <img src="images/ps1.jpg" alt="Photographer">
+                  <span>LensCrafters BD</span>
+                  <div class="star-rating" style="--rating: 4.9;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.9</span>
+                  </div>
+                </div>
+                <div class="provider">
+                  <img src="images/d1.jpg" alt="Decorator">
+                  <span>Elegant Events Decor</span>
+                  <div class="star-rating" style="--rating: 4.7;">
+                    <div class="stars"></div>
+                    <span class="rating-value">4.7</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="event-footer">
+            <button class="btn dark"><i class="fas fa-eye"></i> View Details</button>
+            <button class="btn light"><i class="fas fa-calendar-check"></i> Manage</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button class="btn light"><i class="fas fa-chevron-left"></i> Previous</button>
+        <span>Page 1 of 3</span>
+        <button class="btn light">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Check login state and update UI
+    function updateAuthUI() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const loginButton = document.getElementById('loginButton');
+      const profileDropdown = document.getElementById('profileDropdown');
+      const logoutButton = document.getElementById('logoutButton');
+
+      if (isLoggedIn) {
+        loginButton.style.display = 'none';
+        profileDropdown.style.display = 'flex';
+        logoutButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.setItem('isLoggedIn', 'false');
+          window.location.href = 'index.html';
+        });
+      } else {
+        loginButton.style.display = 'block';
+        profileDropdown.style.display = 'none';
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAuthUI();
+      
+      // Profile dropdown toggle
+      const profileIcon = document.getElementById('profileIcon');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      
+      profileIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      window.addEventListener('click', () => {
+        dropdownMenu.style.display = 'none';
+      });
+
+      // Filter functionality
+      const eventTypeFilter = document.getElementById('event-type');
+      const sortByFilter = document.getElementById('sort-by');
+      const eventCards = document.querySelectorAll('.event-card');
+
+      function filterAndSortEvents() {
+        const typeValue = eventTypeFilter.value;
+        const sortValue = sortByFilter.value;
+        
+        // Filter by type
+        eventCards.forEach(card => {
+          const cardType = card.querySelector('.event-type').className.includes(typeValue) || typeValue === 'all';
+          card.style.display = cardType ? 'block' : 'none';
+        });
+
+        // Sort events
+        const visibleCards = Array.from(eventCards).filter(card => card.style.display !== 'none');
+        
+        visibleCards.sort((a, b) => {
+          const dateA = new Date(a.querySelector('.event-date').textContent);
+          const dateB = new Date(b.querySelector('.event-date').textContent);
+          const typeA = a.querySelector('.event-type').textContent;
+          const typeB = b.querySelector('.event-type').textContent;
+          
+          if (sortValue === 'newest') return dateB - dateA;
+          if (sortValue === 'oldest') return dateA - dateB;
+          if (sortValue === 'type') return typeA.localeCompare(typeB);
+          return 0;
+        });
+
+        // Re-append sorted cards
+        const eventsGrid = document.querySelector('.events-grid');
+        eventsGrid.innerHTML = '';
+        visibleCards.forEach(card => eventsGrid.appendChild(card));
+      }
+
+      eventTypeFilter.addEventListener('change', filterAndSortEvents);
+      sortByFilter.addEventListener('change', filterAndSortEvents);
+
+      // Add new event button
+      document.getElementById('addEventBtn').addEventListener('click', () => {
+        window.location.href = 'services.html';
+      });
+    });
+  </script>
+</body>
+</html>

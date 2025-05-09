@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile - MomentsMaker</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body>
@@ -18,18 +19,18 @@
       <a href="services.html">Services</a>
       <a href="help.html">Help & Support</a>
       <a href="about.html">About Us</a>
-      <div class="profile-dropdown">
-        <span class="icon" id="profileIcon">👤</span>
+      <a href="login.html" class="login-btn" id="loginButton">Login</a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <span class="icon" id="profileIcon"><i class="fas fa-user"></i></span>
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="profile.html">Profile</a>
-          <a href="#">Your Events</a>
+          <a href="events.html">Your Events</a>
           <a href="#">Settings</a>
-          <a href="login.html" id="authLink">Login</a>
+          <a href="#" id="logoutButton">Logout</a>
         </div>
       </div>
     </nav>
   </header>
-
 
   <!-- Main Content -->
   <main>
@@ -39,8 +40,9 @@
         <div class="profile-photo">
           <img src="images/pp-blank.webp" alt="Profile Picture" id="profile-img" />
           <input type="file" id="photo-upload" accept="image/*" style="display: none;" />
-          <br />
-          <button class="btn light" id="upload-btn">Upload Photo</button>
+          <button class="btn light" id="upload-btn">
+            <i class="fas fa-camera"></i> Upload Photo
+          </button>
         </div>
 
         <div class="profile-info">
@@ -66,16 +68,16 @@
             <option value="decorator">Decorator</option>
           </select>
 
-
           <div class="profile-buttons">
-            <button class="btn dark" id="edit-btn">Edit Profile</button>
-            <button class="btn dark" id="save-btn" style="display: none;">Save Changes</button>
+            <button class="btn dark" id="edit-btn">
+              <i class="fas fa-edit"></i> Edit Profile
+            </button>
+            <button class="btn dark" id="save-btn" style="display: none;">
+              <i class="fas fa-save"></i> Save Changes
+            </button>
           </div>
         </div>
       </div>
-
-
-
     </section>
   </main>
 
@@ -83,82 +85,95 @@
   <footer class="footer">
     <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
     <div class="social-icons">
-      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
-      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
-      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
-
   <script>
-    const profileIcon = document.getElementById('profileIcon');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const authLink = document.getElementById('authLink');
-  
-    // Simulate login state (use real auth logic here)
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  
-    // Update auth link text and behavior
-    if (isLoggedIn) {
-      authLink.textContent = 'Logout';
-      authLink.href = 'login.html';
-      authLink.addEventListener('click', () => {
-        localStorage.setItem('isLoggedIn', 'false');
-        window.location.reload(); // or redirect to homepage
-      });
-    } else {
-      authLink.textContent = 'Login';
-      authLink.href = 'login.html';
+    // Check login state and update UI
+    function updateAuthUI() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const loginButton = document.getElementById('loginButton');
+      const profileDropdown = document.getElementById('profileDropdown');
+      const logoutButton = document.getElementById('logoutButton');
+
+      if (isLoggedIn) {
+        loginButton.style.display = 'none';
+        profileDropdown.style.display = 'flex';
+        logoutButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.setItem('isLoggedIn', 'false');
+          window.location.href = 'index.html';
+        });
+      } else {
+        loginButton.style.display = 'block';
+        profileDropdown.style.display = 'none';
+      }
     }
-  
-    profileIcon.addEventListener('click', () => {
-      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-  
-    window.addEventListener('click', (e) => {
-      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAuthUI();
+      
+      // Profile dropdown toggle
+      const profileIcon = document.getElementById('profileIcon');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      
+      profileIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      window.addEventListener('click', () => {
         dropdownMenu.style.display = 'none';
-      }
-    });
-  </script>
-  
+      });
 
-<script>
-  document.getElementById('edit-btn').addEventListener('click', () => {
-    document.querySelectorAll('#name, #email, #phone, #location, #role').forEach(el => el.disabled = false);
-    document.getElementById('edit-btn').style.display = 'none';
-    document.getElementById('save-btn').style.display = 'inline-block';
-  });
+      // Edit/Save profile functionality
+      document.getElementById('edit-btn').addEventListener('click', () => {
+        document.querySelectorAll('#name, #email, #phone, #location, #role').forEach(el => el.disabled = false);
+        document.getElementById('edit-btn').style.display = 'none';
+        document.getElementById('save-btn').style.display = 'inline-block';
+      });
 
-  document.getElementById('save-btn').addEventListener('click', () => {
-    document.querySelectorAll('#name, #email, #phone, #location, #role').forEach(el => el.disabled = true);
-    document.getElementById('edit-btn').style.display = 'inline-block';
-    document.getElementById('save-btn').style.display = 'none';
-    
-    // Optionally, here you can send data to the backend using fetch/AJAX
-  });
-</script>
+      document.getElementById('save-btn').addEventListener('click', () => {
+        document.querySelectorAll('#name, #email, #phone, #location, #role').forEach(el => el.disabled = true);
+        document.getElementById('edit-btn').style.display = 'inline-block';
+        document.getElementById('save-btn').style.display = 'none';
+        
+        // Here you would normally send data to the backend
+        console.log('Profile updated:', {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          location: document.getElementById('location').value,
+          role: document.getElementById('role').value
+        });
+      });
 
-  <script>
-    const uploadBtn = document.getElementById('upload-btn');
-    const photoUpload = document.getElementById('photo-upload');
-    const profileImg = document.getElementById('profile-img');
+      // Profile photo upload
+      const uploadBtn = document.getElementById('upload-btn');
+      const photoUpload = document.getElementById('photo-upload');
+      const profileImg = document.getElementById('profile-img');
 
-    uploadBtn.addEventListener('click', () => {
-      photoUpload.click();
-    });
+      uploadBtn.addEventListener('click', () => {
+        photoUpload.click();
+      });
 
-    photoUpload.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          profileImg.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
+      photoUpload.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            profileImg.src = e.target.result;
+            // Here you would normally upload the image to your backend
+            console.log('Profile photo updated');
+          };
+          reader.readAsDataURL(file);
+        }
+      });
     });
   </script>
 </body>
-
 </html>

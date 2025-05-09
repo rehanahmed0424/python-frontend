@@ -4,27 +4,30 @@
   <meta charset="UTF-8">
   <title>Service Providers - MomentsMaker</title>
   <link rel="stylesheet" href="css/styles.css"> <!-- your main css -->
+  <link rel="stylesheet" href="css/results.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<header>
+  <header>
     <div class="logo"><span>Moments</span>Maker</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
-      <a href="#">Help & Support</a>
-      <a href="#">About Us</a>
-      <div class="profile-dropdown">
-        <span class="icon" id="profileIcon">👤</span>
+      <a href="help.html">Help & Support</a>
+      <a href="about.html">About Us</a>
+      <a href="login.html" class="login-btn" id="loginButton">Login</a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <span class="icon" id="profileIcon"><i class="fas fa-user"></i></span>
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="profile.html">Profile</a>
-          <a href="#">Your Events</a>
-          <a href="#">Settings</a>
-          <a href="login.html" id="authLink">Login</a>
+          <a href="events.html">My Events</a>
+          <a href="#" id="logoutButton">Logout</a>
         </div>
       </div>
     </nav>
-</header>
+  </header>
 
 <section class="search-results">
   <h1 class="results-heading">Photographers in Dhaka</h1>
@@ -268,13 +271,13 @@
 </section>
 
 <footer class="footer">
-    <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
-    <div class="social-icons">
-      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
-      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
-      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
-    </div>
-  </footer>
+  <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
 
  
   <script>
@@ -313,6 +316,50 @@
   });
 </script>
 
+<script>
+  // Check login state and update UI
+  function updateAuthUI() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const loginButton = document.getElementById('loginButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const logoutButton = document.getElementById('logoutButton');
+
+    if (isLoggedIn) {
+      if (loginButton) loginButton.style.display = 'none';
+      if (profileDropdown) profileDropdown.style.display = 'flex';
+      if (logoutButton) {
+        logoutButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.setItem('isLoggedIn', 'false');
+          window.location.href = 'index.html';
+        });
+      }
+    } else {
+      if (loginButton) loginButton.style.display = 'block';
+      if (profileDropdown) profileDropdown.style.display = 'none';
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateAuthUI();
+    
+    // Profile dropdown toggle
+    const profileIcon = document.getElementById('profileIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    
+    if (profileIcon && dropdownMenu) {
+      profileIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      window.addEventListener('click', () => {
+        dropdownMenu.style.display = 'none';
+      });
+    }
+  });
+</script>
 
 </body>
 </html>

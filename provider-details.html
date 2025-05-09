@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Service Provider Details | MomentsMaker</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link href="css/details.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/details.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-  <!-- Reuse your header here -->
   <header>
     <div class="logo"><span>Moments</span>Maker</div>
     <nav>
@@ -17,83 +17,328 @@
       <a href="services.html">Services</a>
       <a href="help.html">Help & Support</a>
       <a href="about.html">About Us</a>
-      <div class="profile-dropdown">
-        <span class="icon" id="profileIcon">👤</span>
+      <a href="login.html" class="login-btn" id="loginButton">Login</a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <span class="icon" id="profileIcon"><i class="fas fa-user"></i></span>
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="profile.html">Profile</a>
-          <a href="#">Your Events</a>
-          <a href="#">Settings</a>
-          <a href="login.html" id="authLink">Login</a>
+          <a href="events.html">My Events</a>
+          <a href="#" id="logoutButton">Logout</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <section class="details-section">
-    <div class="details-img">
-      <img src="images/pm.jpg" alt="Provider Image" />
-    </div>
-    <div class="details-info">
-      <h2 contenteditable="true">John Doe</h2>
-      <div class="rating">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+  <main>
+    <section class="provider-hero">
+      <div class="container">
+        <div class="provider-header">
+          <div class="provider-image">
+            <img id="providerImage" src="" alt="Provider Image">
+            <div id="verifiedBadge" class="verified-badge" style="display: none;">
+              <i class="fas fa-check-circle"></i>
+              <span>Verified</span>
+            </div>
+          </div>
+          <div class="provider-meta">
+            <h1 id="providerName">Loading...</h1>
+            <div class="rating">
+              <div id="starRating" class="stars"></div>
+              <span id="ratingText" class="rating-text"></span>
+            </div>
+            <div class="specialization">
+              <i id="serviceIcon" class="fas fa-camera"></i>
+              <span id="serviceType"></span>
+            </div>
+            <div class="location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span id="providerLocation"></span>
+            </div>
+            <div class="meta-grid">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span id="experienceYears"></span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-calendar-check"></i>
+                <span id="eventsCompleted"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p><strong>Service Type:</strong> Photographer</p>
-      <p><strong>Location:</strong> Dhaka</p>
-      <p><strong>Charge:</strong> ৳15,000</p>
-      <p><strong>Experience:</strong> 5 Years</p>
-      <p><strong>Gender:</strong> Male</p>
+    </section>
 
-      <div class="description-box" contenteditable="true">
-        Highly experienced wedding photographer known for cinematic-style photoshoots. Available for travel and customizable packages.
+    <section class="provider-details">
+      <div class="container">
+        <div class="details-grid">
+          <div class="main-content">
+            <div class="about-section">
+              <h2>About Me</h2>
+              <p id="aboutText"></p>
+            </div>
+
+            <div class="services-section">
+              <h2>Services Offered</h2>
+              <ul id="servicesList" class="services-list"></ul>
+            </div>
+
+            <div class="portfolio-section">
+              <h2>Portfolio</h2>
+              <div id="portfolioGrid" class="portfolio-grid"></div>
+            </div>
+
+            <div class="reviews-section">
+              <h2>Client Reviews</h2>
+              <div id="reviewsContainer"></div>
+            </div>
+          </div>
+
+          <div class="sidebar">
+            <div class="pricing-card">
+              <h3>Pricing</h3>
+              <div class="price"><span id="priceAmount"></span> <span id="priceUnit"></span></div>
+              <ul id="packageFeatures" class="package-features"></ul>
+              <a href="cart.html" class="btn dark hire-btn">
+                <i class="fas fa-calendar-check"></i> Book Now
+              </a>
+              <button class="btn light contact-btn">
+                <i class="fas fa-envelope"></i> Contact
+              </button>
+            </div>
+
+            <div class="quick-info">
+              <h3>Quick Info</h3>
+              <div id="quickInfoContainer"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <a href="cart.html">
-        <button class="hire-btn">Hire Now</button>
-      </a>
-      
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Reuse your footer -->
   <footer class="footer">
-    <p>© 2025 MomentsMaker. All Rights Reserved.</p>
+    <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
     <div class="social-icons">
-      <a href="#"><img src="facebook.svg" alt="Facebook" /></a>
-      <a href="#"><img src="instagram.svg" alt="Instagram" /></a>
-      <a href="#"><img src="tiktok.svg" alt="TikTok" /></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
   <script>
-    const profileIcon = document.getElementById('profileIcon');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const authLink = document.getElementById('authLink');
-  
-    // Simulate login state (use real auth logic here)
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  
-    // Update auth link text and behavior
-    if (isLoggedIn) {
-      authLink.textContent = 'Logout';
-      authLink.href = 'login.html';
-      authLink.addEventListener('click', () => {
-        localStorage.setItem('isLoggedIn', 'false');
-        window.location.reload(); // or redirect to homepage
+    // This data would normally come from your backend/database
+    // For demo purposes, we'll use a sample provider object
+    const providerData = {
+      id: "provider-123",
+      name: "John Doe Photography",
+      image: "images/pm.jpg",
+      isVerified: true,
+      rating: 4.7,
+      reviewCount: 128,
+      serviceType: "Professional Photographer",
+      serviceIcon: "fa-camera",
+      location: "Dhaka, Bangladesh",
+      experience: "5+",
+      eventsCompleted: "200+",
+      about: "With over 5 years of experience in wedding and event photography, I specialize in capturing authentic moments that tell your unique story. My cinematic approach combines technical expertise with artistic vision to deliver images you'll treasure forever.",
+      price: "15,000",
+      priceUnit: "/ day",
+      services: [
+        "Full-day wedding coverage (10 hours)",
+        "Pre-wedding photoshoot",
+        "Engagement session",
+        "Professional photo editing",
+        "Digital gallery with high-res images"
+      ],
+      packageFeatures: [
+        "8 hours coverage",
+        "300+ edited photos",
+        "Online gallery",
+        "1 assistant"
+      ],
+      quickInfo: [
+        { icon: "fa-clock", label: "Experience", value: "5+ years" },
+        { icon: "fa-language", label: "Languages", value: "English, Bangla" },
+        { icon: "fa-car", label: "Travel", value: "Available nationwide" }
+      ],
+      portfolio: [
+        "images/portfolio1.jpg",
+        "images/portfolio2.jpg",
+        "images/portfolio3.jpg"
+      ],
+      reviews: [
+        {
+          id: "review-1",
+          userImage: "https://randomuser.me/api/portraits/women/45.jpg",
+          userName: "Sarah J.",
+          rating: 5,
+          text: "John captured our wedding day perfectly! His attention to detail and ability to capture genuine emotions was incredible. The photos exceeded all our expectations.",
+          date: "March 15, 2023"
+        },
+        {
+          id: "review-2",
+          userImage: "https://randomuser.me/api/portraits/men/32.jpg",
+          userName: "Michael T.",
+          rating: 4,
+          text: "Great experience working with John. He was professional and captured all the important moments of our event.",
+          date: "January 10, 2023"
+        }
+      ]
+    };
+
+    // Function to populate provider data
+    function populateProviderData() {
+      // Hero Section
+      document.getElementById('providerName').textContent = providerData.name;
+      document.getElementById('providerImage').src = providerData.image;
+      document.getElementById('providerImage').alt = providerData.name;
+      document.getElementById('serviceType').textContent = providerData.serviceType;
+      document.getElementById('serviceIcon').className = `fas ${providerData.serviceIcon}`;
+      document.getElementById('providerLocation').textContent = providerData.location;
+      document.getElementById('experienceYears').textContent = `${providerData.experience} Years Experience`;
+      document.getElementById('eventsCompleted').textContent = `${providerData.eventsCompleted} Events Completed`;
+      
+      // Verified badge
+      if (providerData.isVerified) {
+        document.getElementById('verifiedBadge').style.display = 'flex';
+      }
+
+      // Rating
+      const starRating = document.getElementById('starRating');
+      starRating.innerHTML = '';
+      const fullStars = Math.floor(providerData.rating);
+      const hasHalfStar = providerData.rating % 1 >= 0.5;
+      
+      for (let i = 1; i <= 5; i++) {
+        if (i <= fullStars) {
+          starRating.innerHTML += '<i class="fas fa-star"></i>';
+        } else if (i === fullStars + 1 && hasHalfStar) {
+          starRating.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+        } else {
+          starRating.innerHTML += '<i class="far fa-star"></i>';
+        }
+      }
+      
+      document.getElementById('ratingText').textContent = `${providerData.rating} (${providerData.reviewCount} reviews)`;
+
+      // About Section
+      document.getElementById('aboutText').textContent = providerData.about;
+
+      // Services List
+      const servicesList = document.getElementById('servicesList');
+      providerData.services.forEach(service => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check-circle"></i><span>${service}</span>`;
+        servicesList.appendChild(li);
       });
-    } else {
-      authLink.textContent = 'Login';
-      authLink.href = 'login.html';
+
+      // Pricing
+      document.getElementById('priceAmount').textContent = `৳${providerData.price}`;
+      document.getElementById('priceUnit').textContent = providerData.priceUnit;
+
+      // Package Features
+      const packageFeatures = document.getElementById('packageFeatures');
+      providerData.packageFeatures.forEach(feature => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check"></i>${feature}`;
+        packageFeatures.appendChild(li);
+      });
+
+      // Quick Info
+      const quickInfoContainer = document.getElementById('quickInfoContainer');
+      providerData.quickInfo.forEach(info => {
+        const div = document.createElement('div');
+        div.className = 'info-item';
+        div.innerHTML = `<i class="fas ${info.icon}"></i><span><strong>${info.label}:</strong> ${info.value}</span>`;
+        quickInfoContainer.appendChild(div);
+      });
+
+      // Portfolio
+      const portfolioGrid = document.getElementById('portfolioGrid');
+      providerData.portfolio.forEach(image => {
+        const div = document.createElement('div');
+        div.className = 'portfolio-item';
+        div.innerHTML = `<img src="${image}" alt="Portfolio Image">`;
+        portfolioGrid.appendChild(div);
+      });
+
+      // Reviews
+      const reviewsContainer = document.getElementById('reviewsContainer');
+      providerData.reviews.forEach(review => {
+        const div = document.createElement('div');
+        div.className = 'review-card';
+        div.innerHTML = `
+          <div class="review-header">
+            <img src="${review.userImage}" alt="${review.userName}">
+            <div class="reviewer-info">
+              <h4>${review.userName}</h4>
+              <div class="review-rating">
+                ${'<i class="fas fa-star"></i>'.repeat(review.rating)}
+                ${'<i class="far fa-star"></i>'.repeat(5 - review.rating)}
+              </div>
+            </div>
+          </div>
+          <p class="review-text">"${review.text}"</p>
+          <p class="review-date">${review.date}</p>
+        `;
+        reviewsContainer.appendChild(div);
+      });
+
+      // Initialize image click handlers
+      document.querySelectorAll('.portfolio-item img').forEach(img => {
+        img.addEventListener('click', () => {
+          // In a real implementation, this would open a lightbox
+          console.log('Opening image in lightbox');
+        });
+      });
     }
-  
-    profileIcon.addEventListener('click', () => {
-      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-  
-    window.addEventListener('click', (e) => {
-      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.style.display = 'none';
+
+    // Load data when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      populateProviderData();
+      
+      // Initialize auth UI (from your existing code)
+      updateAuthUI();
+      
+      // Profile dropdown toggle
+      const profileIcon = document.getElementById('profileIcon');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      
+      if (profileIcon && dropdownMenu) {
+        profileIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        window.addEventListener('click', () => {
+          dropdownMenu.style.display = 'none';
+        });
       }
     });
+
+    // Auth functions (from your existing code)
+    function updateAuthUI() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const loginButton = document.getElementById('loginButton');
+      const profileDropdown = document.getElementById('profileDropdown');
+      const logoutButton = document.getElementById('logoutButton');
+
+      if (isLoggedIn) {
+        if (loginButton) loginButton.style.display = 'none';
+        if (profileDropdown) profileDropdown.style.display = 'flex';
+        if (logoutButton) {
+          logoutButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.setItem('isLoggedIn', 'false');
+            window.location.href = 'index.html';
+          });
+        }
+      } else {
+        if (loginButton) loginButton.style.display = 'block';
+        if (profileDropdown) profileDropdown.style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>

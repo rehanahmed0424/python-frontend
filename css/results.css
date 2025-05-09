@@ -1,0 +1,118 @@
+/* SEARCH RESULTS PAGE STYLES */
+.search-results {
+    padding: 80px 40px;
+    background-color: #a43753;
+    ;
+    min-height: calc(100vh - 160px);
+  }
+  
+  .results-heading {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 36px;
+    color: #ffffff;
+    position: relative;
+  }
+  
+  .results-heading:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #a43753;
+  }
+  
+  .card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .provider-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .provider-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+  
+  .provider-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid #a43753;
+  }
+  
+  .provider-info {
+    padding: 25px;
+  }
+  
+  .provider-info h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #a43753;
+  }
+  
+  .star-rating {
+    color: #ffc107;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .provider-info p {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .provider-info p:first-of-type {
+    font-weight: bold;
+    color: #1e1e1e;
+  }
+  
+  .short-desc {
+    margin-top: 15px;
+    font-style: italic;
+    color: #777;
+  }
+  
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 1200px) {
+    .card-list {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .search-results {
+      padding: 60px 20px;
+    }
+    
+    .results-heading {
+      font-size: 30px;
+      margin-bottom: 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card-list {
+      grid-template-columns: 1fr;
+    }
+    
+    .provider-card {
+      max-width: 350px;
+      margin: 0 auto;
+    }
+  }

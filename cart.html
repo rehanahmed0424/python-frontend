@@ -3,114 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Cart | MomentMakers</title>
+  <title>Your Cart | MomentsMaker</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/cart.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo"><span>Moments</span>Maker</div>
-        <nav>
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="#">Help & Support</a>
-          <a href="#">About Us</a>
-          <div class="profile-dropdown">
-            <span class="icon" id="profileIcon">👤</span>
-            <div class="dropdown-menu" id="dropdownMenu">
-              <a href="profile.html">Profile</a>
-              <a href="#">Your Events</a>
-              <a href="#">Settings</a>
-              <a href="login.html" id="authLink">Login</a>
-            </div>
-          </div>
-        </nav>
-      </header>
-<main>
-    <div class="cart-container">
-        <h1>Your Cart</h1>
-    
-        <div class="cart-items">
-          <!-- Single Cart Item -->
-          <div class="cart-item">
-            <div class="item-details">
-              <h2>Photographer: SnapPro Studios</h2>
-              <p>Category: Photography</p>
-              <p class="price">৳5,000</p>
-            </div>
-            <button class="remove-btn">Remove</button>
-          </div>
-    
-          <div class="cart-item">
-            <div class="item-details">
-              <h2>Caterer: TasteBuds</h2>
-              <p>Category: Catering</p>
-              <p class="price">৳8,500</p>
-            </div>
-            <button class="remove-btn">Remove</button>
-          </div>
-    
-          <!-- More items will go here -->
+  <header>
+    <div class="logo"><span>Moments</span>Maker</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="help.html">Help & Support</a>
+      <a href="about.html">About Us</a>
+      <a href="login.html" class="login-btn" id="loginButton">Login</a>
+      <div class="profile-dropdown" id="profileDropdown">
+        <span class="icon" id="profileIcon"><i class="fas fa-user"></i></span>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="profile.html">Profile</a>
+          <a href="events.html">My Events</a>
+          <a href="#" id="logoutButton">Logout</a>
         </div>
-        <div class="cart-footer">
-            <div class="total">
-              Total: ৳13,500
-            </div>
-            <div class="cart-buttons">
-                <a href="services.html">
-                    <button class="btn">Find More</button>
-                  </a>
-                  <a href="#">
-                    <button class="btn">Checkout</button>
-                  </a>
-                  
-            </div>
-          </div>
-        </div>
-</main>    
+      </div>
+    </nav>
+  </header>
 
-<footer class="footer">
+  <main>
+    <div class="cart-container">
+      <h1>Your Cart</h1>
+    
+      <div class="cart-items">
+        <!-- Cart items will be populated dynamically -->
+        <div class="cart-item">
+          <div class="item-details">
+            <h2>Photographer: SnapPro Studios</h2>
+            <p>Category: Photography</p>
+            <p class="price">৳5,000</p>
+          </div>
+          <button class="remove-btn">
+            <i class="fas fa-trash-alt"></i> Remove
+          </button>
+        </div>
+    
+        <div class="cart-item">
+          <div class="item-details">
+            <h2>Caterer: TasteBuds</h2>
+            <p>Category: Catering</p>
+            <p class="price">৳8,500</p>
+          </div>
+          <button class="remove-btn">
+            <i class="fas fa-trash-alt"></i> Remove
+          </button>
+        </div>
+      </div>
+      
+      <div class="cart-footer">
+        <div class="total">
+          Total: ৳13,500
+        </div>
+        <div class="cart-buttons">
+          <a href="services.html" class="btn light">
+            <i class="fas fa-search"></i> Find More Services
+          </a>
+          <a href="checkout.html" class="btn dark">
+            <i class="fas fa-credit-card"></i> Proceed to Checkout
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>    
+
+  <footer class="footer">
     <p>&copy; 2025 MomentsMaker. All rights reserved.</p>
     <div class="social-icons">
-      <a href="#"><img src="images/facebook.svg" alt="Facebook" /></a>
-      <a href="#"><img src="images/twitter.svg" alt="Twitter" /></a>
-      <a href="#"><img src="images/instagram.svg" alt="Instagram" /></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
   <script>
-    const profileIcon = document.getElementById('profileIcon');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const authLink = document.getElementById('authLink');
-  
-    // Simulate login state (use real auth logic here)
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  
-    // Update auth link text and behavior
-    if (isLoggedIn) {
-      authLink.textContent = 'Logout';
-      authLink.href = 'login.html';
-      authLink.addEventListener('click', () => {
-        localStorage.setItem('isLoggedIn', 'false');
-        window.location.reload(); // or redirect to homepage
-      });
-    } else {
-      authLink.textContent = 'Login';
-      authLink.href = 'login.html';
-    }
-  
-    profileIcon.addEventListener('click', () => {
-      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-    });
-  
-    window.addEventListener('click', (e) => {
-      if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.style.display = 'none';
-      }
-    });
-  </script>
- 
+    // Check login state and update UI
+    function updateAuthUI() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      const loginButton = document.getElementById('loginButton');
+      const profileDropdown = document.getElementById('profileDropdown');
+      const logoutButton = document.getElementById('logoutButton');
 
-    
+      if (isLoggedIn) {
+        loginButton.style.display = 'none';
+        profileDropdown.style.display = 'flex';
+        logoutButton.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.setItem('isLoggedIn', 'false');
+          window.location.href = 'index.html';
+        });
+      } else {
+        loginButton.style.display = 'block';
+        profileDropdown.style.display = 'none';
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateAuthUI();
+      
+      // Profile dropdown toggle
+      const profileIcon = document.getElementById('profileIcon');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      
+      profileIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      window.addEventListener('click', () => {
+        dropdownMenu.style.display = 'none';
+      });
+
+      // Remove item functionality
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          this.closest('.cart-item').style.animation = 'fadeOut 0.3s ease-out';
+          setTimeout(() => {
+            this.closest('.cart-item').remove();
+            updateCartTotal();
+          }, 300);
+        });
+      });
+    });
+
+    // Update cart total (example function)
+    function updateCartTotal() {
+      // In a real implementation, you would calculate the total from all items
+      console.log('Updating cart total...');
+    }
+
+    // Animation for fade out
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(20px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 </body>
 </html>
